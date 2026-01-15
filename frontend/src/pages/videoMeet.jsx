@@ -16,13 +16,9 @@ import ChatIcon from '@mui/icons-material/Chat';
 import videostyles from "../styles/videoComponent.module.css";
 import usernamestyles from "../styles/username.module.css";
 import chatstyles from "../styles/chatbox.module.css";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
+import server from "../environment"
 
-
-
-const server_url = "http://localhost:8000";
+const server_url = server;
 
 
 const peerConfigConnections = {
