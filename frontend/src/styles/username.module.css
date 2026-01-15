@@ -1,0 +1,153 @@
+/* ========================
+   Full-screen container
+   ======================== */
+.userContainer {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1f1f3b, #272757);
+    font-family: "Poppins", sans-serif;
+}
+
+/* ========================
+   Card container (video + username)
+   ======================== */
+.enterUserContainer {
+    display: flex;
+    gap: 50px;
+    padding: 50px 60px;
+    min-height: 420px;
+    background-color: #1a1a2e; /* dark card for modern feel */
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.enterUserContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================
+   Video Preview Section
+   ======================== */
+.previewBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.enterUserContainer video {
+    height: 280px;
+    width: 400px;
+    background-color: black;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.enterUserContainer video:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* ========================
+   Camera & Mic Buttons
+   ======================== */
+.previewControls {
+    margin-top: 14px;
+    display: flex;
+    gap: 14px;
+}
+
+.previewControls button {
+    background: #3a3a6e;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.previewControls button:hover {
+    transform: scale(1.15);
+    background: #5858a5;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================
+   Username Input + Join Button
+   ======================== */
+.usernameContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical center if height changes */
+    align-items: center;     /* horizontal center */
+    gap: 14px;               /* space between input & button */
+    width: 250px;
+}
+
+/* Input field styling (MUI) */
+.usernameContainer .MuiOutlinedInput-root {
+    background-color: #2c2c4a;
+    color: white;
+    border-radius: 12px;
+    width: 100%;             /* fill container */
+}
+
+.usernameContainer .MuiOutlinedInput-input {
+    color: white;
+    padding: 12px 14px;
+}
+
+.usernameContainer .MuiOutlinedInput-notchedOutline {
+    border-color: #55558a;
+}
+
+.usernameContainer .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #ff9839;
+}
+
+/* Join Room Button */
+.usernameContainer button {
+    width: 100%;             /* full width of container */
+    height: 45px;
+    border-radius: 12px;
+    font-weight: 600;
+    background: #ff9839;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.usernameContainer button:hover {
+    background: #e68a2d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================
+   Responsive Adjustments
+   ======================== */
+@media (max-width: 900px) {
+    .enterUserContainer {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 25px;
+    }
+
+    .usernameContainer {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .previewControls {
+        gap: 10px;
+    }
+
+    .enterUserContainer video {
+        width: 300px;
+        height: 210px;
+    }
+}

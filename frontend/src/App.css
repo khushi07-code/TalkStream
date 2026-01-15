@@ -1,0 +1,341 @@
+/* ===== LANDING PAGE CONTAINER ===== */
+.landingPageContainer {
+  width: 100vw;
+  height: 100vh;
+
+  background: linear-gradient(
+      rgba(10, 12, 30, 0.75),
+      rgba(10, 12, 30, 0.75)
+    ),
+    url("/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.landingPageContainer nav {
+  padding: 1.5rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 12, 30, 0.6); /* subtle dark overlay */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.landingPageContainer nav h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ff9839;
+}
+
+.landingPageContainer nav .navlist {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1rem;
+}
+
+.landingPageContainer nav .navlist button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-weight: 500;
+}
+
+.landingPageContainer nav .navlist button:hover {
+  background: #ff9839;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 152, 57, 0.4);
+}
+
+/* ===== MAIN CONTENT ===== */
+.landingMainContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem;
+  height: calc(100vh - 90px);
+  gap: 3rem;
+}
+
+/* LEFT SECTION (TEXT & CTA) */
+.landingMainContainer > div:nth-child(1) {
+  max-width: 500px;
+}
+
+.landingMainContainer > div:nth-child(1) h2 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.landingMainContainer > div:nth-child(1) h2 span {
+  color: #ff9839;
+}
+
+.landingMainContainer > div:nth-child(1) p {
+  font-size: 1.2rem;
+  opacity: 0.85;
+  margin-bottom: 2rem;
+}
+
+/* CTA BUTTON */
+.landingMainContainer
+  > div:nth-child(1)
+  div[role="button"] {
+  background: linear-gradient(135deg, #ff9839, #ff7b00);
+  width: fit-content;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 12px 30px rgba(255, 152, 57, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.landingMainContainer
+  > div:nth-child(1)
+  div[role="button"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(255, 152, 57, 0.45);
+}
+
+.landingMainContainer
+  > div:nth-child(1)
+  div[role="button"] a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* RIGHT IMAGE */
+.landingMainContainer > div:nth-child(2) img {
+  height: 70vh;
+  width: auto;
+  border-radius: 20px;
+  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.landingMainContainer > div:nth-child(2) img:hover {
+  transform: scale(1.03);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .landingMainContainer {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 2rem 2rem;
+    height: auto;
+  }
+
+  .landingMainContainer > div:nth-child(2) img {
+    height: 50vh;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .landingPageContainer nav {
+    padding: 1rem 2rem;
+  }
+
+  .landingPageContainer nav h2 {
+    font-size: 1.6rem;
+  }
+
+  .landingPageContainer nav .navlist {
+    gap: 1rem;
+  }
+
+  .landingMainContainer > div:nth-child(1) h2 {
+    font-size: 2rem;
+  }
+
+  .landingMainContainer > div:nth-child(1) p {
+    font-size: 1rem;
+  }
+}
+
+/* NAVBAR */
+/* home css */
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background: linear-gradient(90deg, #1b1f3b, #2c2f5a);
+  color: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+.navBar h3 {
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+}
+
+.navBar > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navBar p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Buttons in Navbar */
+.navBar button {
+  background: #ff9839;
+  color: white;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+.navBar button:hover {
+  background: #e87b1f;
+}
+
+/* MEETING PAGE */
+.meetContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 80px;
+  height: calc(100vh - 70px);
+  background: radial-gradient(circle at top left, #1b1f3b, #0b0d1a);
+  color: white;
+  gap: 4rem;
+  font-family: "Poppins", sans-serif;
+}
+
+/* LEFT PANEL */
+.leftPanel {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.leftPanel h2 {
+  font-size: 2.8rem;
+  line-height: 1.2;
+  max-width: 550px;
+  margin-bottom: 32px;
+  color: #fff;
+}
+
+.leftPanel > div > div {
+  max-width: 480px;
+  display: flex;
+  gap: 12px;
+}
+
+/* JOIN INPUT FIELD */
+.MuiTextField-root {
+  flex: 1;
+}
+
+.MuiOutlinedInput-root {
+  background-color: white;
+  border-radius: 10px;
+  input {
+    color: black;
+  }
+}
+
+.MuiOutlinedInput-root:hover fieldset {
+  border-color: #ff9839;
+}
+
+.MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #ff9839;
+}
+
+/* JOIN BUTTON */
+.leftPanel button {
+  background-color: #ff9839;
+  color: white;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-transform: none;
+  box-shadow: 0 8px 20px rgba(255, 152, 57, 0.3);
+  transition: all 0.3s ease;
+}
+
+.leftPanel button:hover {
+  background-color: #e87b1f;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(255, 152, 57, 0.4);
+}
+
+/* RIGHT PANEL */
+.rightPanel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightPanel img {
+  width: 36vw;
+  max-width: 500px;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rightPanel img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .meetContainer {
+    flex-direction: column;
+    padding: 40px;
+    gap: 40px;
+  }
+
+  .rightPanel img {
+    width: 80%;
+  }
+
+  .leftPanel h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .leftPanel > div > div {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .leftPanel button {
+    width: 100%;
+  }
+}

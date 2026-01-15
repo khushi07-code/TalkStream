@@ -1,0 +1,234 @@
+/* ===========================
+   Video Stage Container
+   =========================== */
+.stage {
+    display: flex;
+    height: 100vh;
+    background: radial-gradient(circle at top left, #1b1f3b, #0b0d1a);
+    font-family: "Poppins", sans-serif;
+    position: relative;
+}
+
+/* Main video area */
+.videoStage {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Grid for remote participants */
+.videoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    height: 100%;
+}
+
+/* Remote video wrapper */
+.videoWrapper {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #1a1d3a, #0d1025);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.videoWrapper:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+}
+
+.videoElement {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+/* Mic-off or muted icon overlay */
+.videoIcon {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    padding: 8px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===========================
+   Local Video PiP
+   =========================== */
+.localVideoWrapper {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 180px;
+    height: 120px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    z-index: 10;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: grab;
+}
+
+.localVideoWrapper:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.7);
+}
+
+.localVideoElement {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===========================
+   Control Dock
+   =========================== */
+.controlDock {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 14px;
+    padding: 12px 22px;
+    background: rgba(25,28,60,0.6);
+    backdrop-filter: blur(14px);
+    border-radius: 999px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    z-index: 20;
+}
+
+.controlDock button {
+    color: white;
+    background: rgba(0,0,0,0.25);
+    border-radius: 50%;
+    padding: 12px;
+    transition: all 0.2s ease;
+}
+
+.controlDock button:hover {
+    transform: scale(1.2);
+    background: rgba(255,255,255,0.15);
+}
+
+/* End call button */
+.endBtn {
+    background: #e53935 !important;
+}
+
+/* ===========================
+   Responsive Video Adjustments
+   =========================== */
+@media (max-width: 1200px) {
+    .localVideoWrapper {
+        width: 160px;
+        height: 110px;
+    }
+}
+
+@media (max-width: 900px) {
+    .videoGrid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+    }
+
+    .controlDock {
+        bottom: 16px;
+        padding: 8px 16px;
+    }
+
+    .localVideoWrapper {
+        width: 140px;
+        height: 100px;
+        bottom: 12px;
+        right: 12px;
+    }
+}
+
+
+
+/* return (
+        <div>
+            {askForUsername === true ?
+                <div className={usernamestyles.enterUserContainer}>
+                    <div>
+                        <video ref={localVideoRef} autoPlay muted></video>
+                        <br />
+                        <div className={usernamestyles.videoaudioContainer}>
+                            <IconButton onClick={handleVideo} style={{ color: "black" }}>
+                                {(videoEnabled === true) ? <VideocamIcon /> : <VideocamOffIcon />}
+                            </IconButton>
+                            <IconButton onClick={handleAudio} style={{ color: "black" }}>
+                                {(audioEnabled === true) ? <MicIcon /> : <MicOffIcon />}
+                            </IconButton>
+                        </div>
+                    </div>
+                    <div className={usernamestyles.usernameContainer}>
+                        <TextField id="outlined-basic" label="Username" variant="outlined" name="username" onChange={(e) => { setUsername(e.target.value) }} value={username} />
+                        <Button variant="contained" onClick={connect}>connect</Button>
+                    </div>
+                </div>
+                : <div className={videostyles.meetVideoContainer}>
+                    <div className={videostyles.buttonContainers}>
+                        <IconButton onClick={handleVideo} style={{ color: "white" }}>
+                            {(videoEnabled === true) ? <VideocamIcon /> : <VideocamOffIcon />}
+                        </IconButton>
+                        <IconButton style={{ color: "red" }}>
+                            <CallEndIcon />
+                        </IconButton>
+                        <IconButton onClick={handleAudio} style={{ color: "white" }}>
+                            {(audioEnabled === true) ? <MicIcon /> : <MicOffIcon />}
+                        </IconButton>
+                        {screenAvailable === true ?
+                            <IconButton style={{ color: "white" }} onClick={handleScreen}>
+                                {screen === true ? <ScreenShareIcon /> : <StopScreenShareIcon />}
+                            </IconButton> : <></>
+                        }
+                        <Badge badgeContent={newMessage} max={999} color="secondary">
+                            <IconButton style={{ color: "white" }}>
+                                <ChatIcon />
+                            </IconButton>
+                        </Badge>
+                    </div>
+                    <div className={videostyles.videoWrapper}>
+                        <video ref={localVideoRef} autoPlay muted className={videostyles.meetUserVideo}></video>
+                        {!audioEnabled &&  <div className={videostyles.videoIcon}><MicOffIcon /> </div>}
+                    </div>
+                    <div className={videostyles.conferenceView}>
+                        {videos.map(v => (
+                            <div key={v.socketId}>
+                                <video
+                                    autoPlay
+                                    playsInline
+                                    muted
+                                    data-socket={v.socketId}
+                                    ref={(el) => {
+                                        if (el && v.stream) el.srcObject = v.stream;
+                                    }}
+                                    style={{ width: "300px", background: "#000" }}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                    {showModel === true ?
+                        <div className={chatstyles.chatContainer}>
+                            <h1>Chat</h1>
+                            <div className={chatstyles.chatbox}>{message}</div>
+                            <TextField id="outlined-basic" label="chat message" variant="outlined" name="message" onChange={(e) => { setMessage(e.target.value) }} value={message} />
+                            <Button variant="contained" onClick={connect}>connect</Button>
+                        </div>
+                        : <></>}
+                </div>}
+        </div>
+    );
+} */
